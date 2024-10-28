@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="algo2.css" rel="stylesheet">
+    <title>Insertion Sort Example</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+
+<h1>Insertion Sort Algorithm</h1>
+<p>Enter numbers separated by commas:</p>
+<input type="text" id="inputArray" placeholder="e.g., 5, 2, 9, 1, 5, 6">
+<button id="sortButton">Sort</button>
+
+<h2>Sorted Array:</h2>
+<p id="sortedArray"></p>
+
+<script>
+    function insertionSort(arr) {
+        for (let i = 1; i < arr.length; i++) {
+            let key = arr[i];
+            let j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+        return arr;
+    }
+
+    document.getElementById('sortButton').addEventListener('click', function() {
+        const input = document.getElementById('inputArray').value;
+        const arr = input.split(',').map(Number); // Convert input to an array of numbers
+        const sortedArr = insertionSort(arr);
+        document.getElementById('sortedArray').textContent = sortedArr.join(', ');
+    });
+</script>
+
+</body>
+</html>
